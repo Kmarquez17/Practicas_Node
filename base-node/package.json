@@ -1,0 +1,15 @@
+{
+    "name": "base-node",
+    "version": "1.0.0",
+    "description": "Esta app es de lineas de comando",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Kevin Márquez",
+    "license": "MIT",
+    "dependencies": {
+        "colors": "^1.4.0",
+        "yargs": "^15.3.1"
+    }
+}
