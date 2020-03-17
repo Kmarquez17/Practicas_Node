@@ -5,6 +5,8 @@ const porHacer = require("./por-hacer/por-hacer");
 
 let comando = argv._[0];
 
+console.log(argv);
+
 switch (comando) {
   case "crear":
     let tarea = porHacer.crear(argv.descripcion);
@@ -12,7 +14,7 @@ switch (comando) {
 
     break;
   case "listar":
-    let listado = porHacer.getListado();
+    let listado = porHacer.getListado(argv.completado);
     for (let tarea of listado) {
       console.log("======Por Hacer======".green);
       console.log(tarea.descripcion);

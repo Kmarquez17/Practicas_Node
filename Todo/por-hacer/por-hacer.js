@@ -35,8 +35,18 @@ const crear = descripcion => {
   return porHacer;
 };
 
-const getListado = () => {
-  return cargarDB();
+const getListado = (completado = true) => {
+  cargarDB();
+
+  let convertir = completado === "true" || completado;
+
+  let listadoFiltrado = listadoPorHacer.filter(tarea => {
+    return tarea.completado === convertir;
+  });
+
+  console.log(listadoFiltrado);
+
+  return listadoFiltrado;
 };
 
 const actualizar = (descripcion, completado = true) => {
