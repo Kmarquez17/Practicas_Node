@@ -9,7 +9,7 @@ http
       url: req.url,
     };
     res.write(JSON.stringify(salida));
-    res.end();
+    res.end(); 
   })
   .listen(8080);
 
