@@ -9,7 +9,7 @@
     "author": "Kevin Márquez",
     "license": "MIT",
     "dependencies": {
-        "colors": "^1.4.0",
-        "yargs": "^15.3.1"
+        "colors": "1.4.0",
+        "yargs": "15.3.1"
     }
 }
