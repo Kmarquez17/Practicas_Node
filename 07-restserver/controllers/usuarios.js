@@ -24,10 +24,7 @@ const usuariosPOST = async (req = request, res = response) => {
     rol,
   });
 
-  //Verificar si el correo existe
-
   //Encriptar contraseña
-
   const salt = await bcryptjs.genSaltSync();
   usuario.password = await bcryptjs.hashSync(password, salt);
 
