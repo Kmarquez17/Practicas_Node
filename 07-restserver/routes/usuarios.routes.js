@@ -10,7 +10,11 @@ const {
 } = require("../controllers/usuarios");
 
 const { validarCampos } = require("../middleware/validar-campos");
-const { esRoleValido, emailExiste } = require("../helpers/db-validators");
+const {
+  esRoleValido,
+  emailExiste,
+  existeUsuarioPorId,
+} = require("../helpers/db-validators");
 
 router.get("/", usuariosGET);
 
@@ -22,7 +26,6 @@ router.post(
       min: 6,
     }),
     check("correo", "El correo no es válido").isEmail(),
-    // check("rol", "No es un rol válido").isIn(["ADMIN_ROLE", "USER_ROLE"]),
     check("correo").custom(emailExiste),
     check("rol").custom(esRoleValido),
   ],
@@ -30,8 +33,25 @@ router.post(
   usuariosPOST
 );
 
-router.put("/:id", usuariosPUT);
+router.put(
+  "/:id",
+  [
+    check("id", "No es un ID válido").isMongoId(),
+    check("id").custom(existeUsuarioPorId),
+    check("rol").custom(esRoleValido),
+  ],
+  validarCampos,
+  usuariosPUT
+);
 
-router.delete("/", usuariosDELETE);
+router.delete(
+  "/:id",
+  [
+    check("id", "No es un ID válido").isMongoId(),
+    check("id").custom(existeUsuarioPorId),
+    validarCampos,
+  ],
+  usuariosDELETE
+);
 
 module.exports = router;
